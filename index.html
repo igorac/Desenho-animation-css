@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Desenho</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #casa {
+            height: 300px;
+            width: 500px;
+
+            top: 0;
+            background-color: #b5f5ff;
+            position: relative; /*  Para que possa segurar os elementos absolutos  */
+
+            animation-name: tempo;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+             /* animation-fill-mode: backwards; */
+        }
+
+        @keyframes tempo {
+            from { background-color: #b5f5ff }
+            to  { background-color: #2e2a29 }
+        }
+
+
+
+        #sol {
+            border: 1px solid #f2e80f;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: #f2e80f;
+            border-radius: 50%;
+            right: 100px;
+
+            animation-name: sol;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            /* animation-fill-mode: forwards; Caso esteja utilizando animation-iteration-count: infinite, não necessita dessa propriedade */
+
+            
+        }
+
+        @keyframes sol {
+            0%   { top: -60px; opacity: 0.2; }
+            25%  { box-shadow: 0px 0px 3px 0px rgb(255, 183, 76); opacity: 0.3;}
+            50%  { box-shadow: 0px 0px 10px 2px rgba(252,163,38,1); opacity: 0.4; }
+            75%  { box-shadow: 0px 0px 13px 2px rgba(252,163,38,1); }
+            100% { top: 20px; box-shadow: 0px 0px 15px 2px rgba(252,163,38,1); }
+        }
+
+       
+
+        #lua {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            background-color: #fcfafa;
+            border-radius: 50%;
+
+            animation-name: lua;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+
+        @keyframes lua {
+            0%   { top: -60px; left: -30px;  opacity: 0.3;}
+            25%  { box-shadow: 0px 0px 3px 0px rgb(185, 180, 180);  opacity: 0.4;}
+            50%  { box-shadow: 0px 0px 10px 2px rgb(223, 210, 210); opacity: 0.5;}
+            75%  { box-shadow: 0px 0px 13px 2px rgb(226, 209, 209); }
+            100% { top: 20px; left: 10px; box-shadow: 0px 0px 15px 2px rgb(255, 255, 255); }
+        }
+
+
+        #chao {
+            position: absolute;
+            width: 500px;
+            height: 30px;
+            background-color: #633f0b;
+            border-top: 7px solid #0e630b;
+            bottom: 0;
+        }
+
+
+        #fachada {
+            background-color: #fffecc;
+            position: absolute;
+            width: 300px;
+            height: 100px;
+            bottom: 37px;
+            right: 50px;
+        }
+
+        #fachada .telhado {
+            width: 300px;
+            border-top: 30px solid #8f3806;
+            border-right: 15px solid transparent;
+            position: absolute;
+            top: -30px;
+            transform: scaleY(-1); /* Inverte a imagem na vertical */
+        }
+
+        #fachada .janelas {
+            width: 80px;
+            height: 30px;
+            background-color: #b5f5ff;
+            border: 2px solid;
+        }
+
+
+        #fachada .janela1 {
+            position: absolute;
+            left: 55px;
+            top: 10px;
+            border: 2px solid;
+        }
+
+        #fachada .janela1::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            height: 100%;
+            border: 1px solid;
+        }
+
+        #fachada .janela1::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            border: 1px solid;
+        }
+
+
+        #fachada .janela2 {
+            position: absolute;
+            right: 55px;
+            top: 10px;
+            border: 2px solid;
+        }
+
+        #fachada .janela2::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            height: 100%;
+            border: 1px solid;
+        }
+
+        #fachada .janela2::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            border: 1px solid;
+        }
+
+        #fachada .porta {
+            height: 40px;
+            width: 25px;
+            position: absolute;
+            background-color: #8f3806;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #fachada .porta:hover {
+            width: 50px;
+            left: 54.13%;  /* left: 162.4px; */
+            background: linear-gradient( to right, black 50%, #8f3806 50%);
+        }
+
+
+        #fachada .porta::before {
+            content: '';
+            
+            border: 1px solid #f2e80f;
+            background-color: #f2e80f;
+
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+
+            position: absolute;
+            right: 2px;
+            top: 50%;
+        }
+
+        #torre {
+            position: absolute;
+            bottom: 30px;
+            left: 70px;
+
+            height: 160px;
+            width: 80px;
+            background-color: #eae7c5;
+        }
+
+        #torre .telhado {
+            position: absolute;
+            top: -30px;
+            left: -15px;
+
+            border-left: 55px solid transparent;
+            border-right: 55px solid transparent;
+            border-bottom: 40px solid #8f3806;
+        }
+
+        #torre .janelas {
+            background-color: #b5f5ff;
+            height: 30px;
+            width: 30px;
+            border: 2px solid;
+            border-radius: 50%;
+        }
+
+        #torre .janela1 {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+
+        #torre .janela1::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            border: 1px solid;
+        }
+
+        #torre .janela1::after {
+            content: '';
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            height: 100%;
+            border: 1px solid;
+        }
+
+
+        #torre .janela2 {
+            position: absolute;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #torre .janela2::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            
+            transform: translateY(-50%);
+            width: 100%;
+            border: 1px solid;
+        }
+
+        #torre .janela2::after {
+            content: '';
+            position: absolute;
+            right: 50%;
+
+            transform: translateX(50%);
+            height: 100%;
+            border: 1px solid;
+        }
+     
+
+    
+    </style>
+
+</head>
+<body>
+    <div id="casa">
+        <!-- <div class="d-flex"> -->
+                <div id="lua"></div>
+                <div id="sol"></div>
+        <!-- </div> -->
+        <div id="fachada">
+          <div class="telhado"></div>
+          <div class="janelas janela1"></div>
+          <div class="janelas janela2"></div>
+          <div class="porta"></div>
+        </div>
+        <div id="torre">
+          <div class="telhado"></div>
+          <div class="janelas janela1"></div>
+          <div class="janelas janela2"></div>
+        </div>
+        <div id="chao"></div>
+    </div>
+</body>
+</html>
